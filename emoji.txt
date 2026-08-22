@@ -1,0 +1,7 @@
+❤️ = C-x 8 <Enter> #x2764  C-x 8 <Enter> #xFE0F <Enter>
+👍 = C-x 8 <Enter> #x1F44D <Enter>
+
+I ❤️ Emacs
+Emacs 👍
+
+C-x 8 e e . . .
