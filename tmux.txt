@@ -27,7 +27,7 @@ $ tmux new -s extend -d
 $ -d is detach you are not in tmux
 
 $ tmux ls
-basic: 1 windows (created Thu Sep 10 15:45:15 2026)
+basic: 1 windows (created Thu Sep 10 15:45:15 2026
 extend: 1 windows (created Thu Sep 10 15:52:53 2026)
 
 C-b d => detach
@@ -42,5 +42,23 @@ Outside $ tmux kill-session -t basic
 Outside $ tmux kill-session -t extend
 
 $ tmux ls
+no server running on /tmp/tmux-1000/default
+tmux> C-b : kill-window
+tmux> C-b : kill window
+
+$ tmux
+tmux> C-b c => create window
+0: 2 windows
+tmux> C-bd
+$ tmux
+1: 1 windows
+tmux> C-b d
+$ tmux ls
+0: 2 windows (created Thu Sep 10 16:45:02 2026)
+1: 1 windows (created Thu Sep 10 16:48:51 2026)
+
+$ tmux attach -t 0
+tmux> C-b n => next window
+tmux> C-b p => prev window
 
 
