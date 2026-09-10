@@ -61,4 +61,5 @@ $ tmux attach -t 0
 tmux> C-b n => next window
 tmux> C-b p => prev window
 
+Dit kan niet waar zijn
 
