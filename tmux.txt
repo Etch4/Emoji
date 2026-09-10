@@ -1,0 +1,46 @@
+$ tmux -V => 3.7
+Afgedraaide magneten !!
+
+Requirements :
+			 libevent-devel : ncurses-devel : build-essential
+			 bison : pkg-config
+			 
+cd /opt
+/opt/# git clone http://github.com/tmux/tmux.git
+/opt/# cd tmux
+/opttmux/# sh autogen.sh
+/opttmux/# ./configure
+/opttmux/# make
+/opttmux/# make install
+/opttmux/# exit
+
+$ tmux -V => 3.9
+Geen afgedraaide magneten !!
+
+$ tmux new -s basic
+tmux> C-b d
+$ tmux list-sessions == $ tmux ls
+
+$ tmux attach
+tmux> C-b d
+$ tmux new -s extend -d
+$ -d is detach you are not in tmux
+
+$ tmux ls
+basic: 1 windows (created Thu Sep 10 15:45:15 2026)
+extend: 1 windows (created Thu Sep 10 15:52:53 2026)
+
+C-b d => detach
+tmux attach -t basic
+tmux attach -t extend
+
+License to kill
+Inside tmux C-b : kill-session
+Inside tmux C-b : kill-session
+
+Outside $ tmux kill-session -t basic
+Outside $ tmux kill-session -t extend
+
+$ tmux ls
+
+
