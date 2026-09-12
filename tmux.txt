@@ -1,3 +1,41 @@
+################
+# ~/.tmux.conf #
+################
+# The IceBreaker
+
+run-shell /opt/tmux-menus/menus.tmux
+set -g pane-border-indicators arrows
+set -w -g mode-keys emacs
+
+# std statusbalk color + fg color
+set -g status-bg color14
+set -g status-fg color255
+
+# this is [ data ] [ time ]
+set -g status-right "[ %d %b ] [ %R ]"
+
+# googleAI 
+set-window-option -g window-status-current-style fg=color208,bold
+#############################################################
+
+
+############
+# ~/TM/ETS #
+############
+tmux new-session -d
+tmux send-keys -t 0 'cd ~/BV/Emoji' C-m
+tmux send-keys -t 0 'emacs tmux.txt &' C-m
+
+
+tmux new-session  -d
+tmux split-window -v -t 1
+tmux send-keys -t 1:0.1 'cal' C-m
+
+tmux attach
+#######################################################
+
+
+SUMMARY :
 $ tmux -V => 3.7
 Afgedraaide magneten !!
 
@@ -16,6 +54,9 @@ cd /opt
 
 $ tmux -V => 3.9
 Geen afgedraaide magneten !!
+
+set -w -g mode-keys emacs
+C-b = LIST ALL PASTE BUFFER (BUFFERSTACK)
 
 $ tmux new -s basic
 tmux> C-b d
@@ -47,9 +88,11 @@ tmux> C-b : kill-window
 tmux> C-b : kill window
 
 $ tmux
-tmux> C-b c => create window
+tmux> C-b c => new-window
+tmux> C-b : new-window
 0: 2 windows
-tmux> C-bd
+
+tmux> C-b d
 $ tmux
 1: 1 windows
 tmux> C-b d
@@ -61,5 +104,155 @@ $ tmux attach -t 0
 tmux> C-b n => next window
 tmux> C-b p => prev window
 
-Dit kan niet waar zijn
+tmux> C-b [win#]
+
+tmux> C-b 0
+tmux> C-b 1
+tmux> C-b w => window summary
+
+Close a window
+	  exit => no conformation
+	  C-b & => conformation [Y/N]
+
+C-b % split-vertical
+C-b " split-horizontal
+C-b o other-pane::
+
+tmux> C-b : new-window "top"
+Side-effect q in top close the window
+
+HELP C-b ?
+
+in .tmux.conf
+Dacht niet dat het werkt even testen
+bind r source-file ~/.tmux.conf
+display-message "Config Reloaded"
+
+bind-key -n C-r source-file ~/.tmux.conf
+
+bind -r => repeat auto the prefix
+
+COLOR PROGRAM
+
+###################################
+printf "\n"
+
+for i in {0..255}
+
+do
+printf "\x1b[38;5;${i}m%3d " ${i}
+   if (( (i + 1) % 16 == 0 ))
+      then
+      printf "\n"
+   fi
+done
+
+printf "\n"
+#################################
+
+
+$ git init
+$ git add .
+$ git commit -m "01"
+$ gh repo create tmux256  --source=. --remote=origin --public
+$ gh auth login
+$ git push --set-upstream origin main
+done
+
+
+#############################################33
+
+~/TM/ETS
+tmux new-session -d
+tmux send-keys -t 0 'cd ~/BV/Emoji' C-m
+tmux send-keys -t 0 'emacs tmux.txt &' C-m
+
+
+tmux new-session  -d
+tmux split-window -v -t 1
+tmux send-keys -t 1:0.1 'cal' C-m
+
+tmux attach
+
+####################3
+
+SWITCH SESSIONS
+C-b ( => prev session
+C-b ) => next session
+
+SWITCH WINDOWS
+C-b p => prev window
+C-b n => next window
+
+SWITCH PANE
+C-b o next pane
+
+Tmux-3.pdf from dokumen.pub
+
+C-b [ copy-mode
+set -w -g mode-keys emacs
+
+: capture-pane
+C-b o
+$ tmux show-buffer
+
+C-b [ => copy-mode
+Esc => end copy-mode
+
+Copy in tmux
+C-b [ => cp-mode
+	C-s (search-down)
+		color <enter>
+			  C-s C-s
+			  It is like emacs
+			  <enter>
+		mark C-Spc
+		point
+		M-w
+		C-b o
+C-b ]
+
+C-b 0
+	C-b [
+	mark C-Spc
+	Point
+	M-w
+	C-b o
+C-b ]
+
+$ tmux -show-buffer && printf "\n"
+last buffer is showed
+
+if
+	: choose-buffer
+	: choose-buffer
+then
+	Navigate | choose number
+
+BufferStack
+	buffer2
+	buffer1
+	buffer0
+
+: capture-pane
+$ tumux show-buffer (last-buffer)
+: save-buffer bt.txt
+: load-buffer bt.txt
+
+: paste-buffer -b buffer2
+: paste-buffer -b buffer1
+: paste-buffer -b buffero
+
+C-b =   C-b =  LIST ALL PASTE BUFFERS
+
+C-b ! create new window for a pane !
+
+: join-pane [src-window & pane] [ target-window & pane]
+
+C-b Z Zen-Mode C-b Z Zen-Mode C-b z Zen-Mode
+
+: new-session
+C-b s Show window selection list
+C-b w show window selection list windows expanded
+
 
